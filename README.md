@@ -1,0 +1,3 @@
+## BScraper
+
+npm install

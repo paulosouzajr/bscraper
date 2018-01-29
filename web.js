@@ -3,7 +3,6 @@ keystone.init({
 
   'name': 'BScraper',
 
-  'favicon': 'public/favicon.ico',
   'less': 'public',
   'static': ['public'],
 

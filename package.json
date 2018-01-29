@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "express": "^4.16.2",
+    "jade": "^1.11.0",
     "keystone": "latest",
     "underscore": "latest"
   },
