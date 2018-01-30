@@ -14,17 +14,19 @@ html
         block head
     body
         
-        #header BScraper
+        #header 
+        h1(class="text-center") BScraper
         
-        #body
-            
+        #body            
             block intro
             
             +flash-messages(messages)
             
             block content
         
-        #footer Powered by <a href='http://keystonejs.com', target='_blank'>KeystoneJS</a>.
+        #footer 
+            center Powered by <a href='http://keystonejs.com', target='_blank'>KeystoneJS</a>.
+            
     
     script(src='/js/jquery/jquery-1.11.3.min.js')
     

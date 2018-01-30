@@ -13,24 +13,16 @@ exports = module.exports = function (req, res) {
 
 	// Set locals
 	locals.section = 'signup';
-	locals.filters = {
-	};
-	locals.data = {
-	};
-
-	console.log(req);
+	locals.filters = {};
+	locals.data = {};
 
 	locals.formData = req.body || {};
 
+	//on post request in the form
 	view.on('post', { action: 'user.create' }, function(next) {
 
-		// if (!keystone.security.csrf.validate(req)) {
-		// 	req.flash('error', 'There was an error with your request, please try again.');
-		// 	return renderView();
-		// }
-
 		if(locals.formData.password !== locals.formData.password_confirm){
-      req.flash('error', 'The passwords do not match.');
+			//req.flash('error', { title: 'The passwords do not match.'});
 			next();
 		}
 
@@ -48,11 +40,14 @@ exports = module.exports = function (req, res) {
 
 		newUser.save(function(err, result) {
 			if (err) {
-				locals.data.validationErrors = err.errors;
+				if(err.code == "11000"){
+					//req.flash('error', { title: 'User already exists.'});
+				}
 			} else {
-				req.flash('success', 'Account created. Please sign in.');
+				console.log("Add new user" + newUser.name);
 
-				//auto-signin can be easily implemented using the keystone.session.signin() API.
+				//req.flash('success', { title: 'Account created. Please sign in.'});
+
 				return res.redirect('/keystone/signin');
 			}
 			next();

@@ -1,0 +1,25 @@
+extends ../layouts/base
+
+block intro
+	.container
+		h1= 'Home'
+		
+block content
+	.container
+		if user.nubankPass
+			p Looking ...
+		else
+			p Please insert your Nubank password.
+
+			form.contact-form(method="post").row.col-sm-8.col-md-6
+				input(type='hidden', name='action', value='nubank.pull')
+
+				.form-group
+						label CPF
+						input.form-control.input-box(type='text', name='cpf', value=user.CPF, disabled)
+				.form-group
+						label Password
+						input.form-control.input-box(type='password', name='password', value=formData.password)
+
+
+				button(type='submit').btn.btn-success Save

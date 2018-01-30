@@ -21,6 +21,9 @@ keystone.set('500', function(err, req, res, next) {
     }
     res.err(err, title, message);
 });
+
+//redirect non admin user to home after login
+keystone.set('signin redirect', '/home');
  
 // Load Routes
 var routes = {
@@ -32,5 +35,8 @@ exports = module.exports = function(app) {
     
     app.get('/', routes.views.index);
     app.get('/signup', routes.views.signup);
-    
+    app.post('/signup', routes.views.signup);
+    app.get('/home', routes.views.home);
+    app.post('/home', routes.views.home);
+
 }

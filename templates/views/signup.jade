@@ -8,6 +8,8 @@ block content
 	.container
 		if user
 			p You are already logged in.
+			script.
+				window.location.replace("/home");
 		else
 			p Fill form in order to sign up.
 
@@ -27,7 +29,7 @@ block content
 						input.form-control.input-box(type='email', name='email', value=formData.email, placeholder='Email')
 				.form-group
 						label CPF
-						input.form-control.input-box(type='password', name='cpf', value=formData.cpf, placeholder='CPF')
+						input.form-control.input-box(type='text', name='cpf', value=formData.cpf, placeholder='CPF')
 				.form-group
 						label Password
 						.row
